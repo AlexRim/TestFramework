@@ -15,7 +15,7 @@ namespace AllStarsSolution.DriverExtensions
 
         public static IWebElement GetElement(By locator)
         {
-            var wait
+           return Browser.GetDriver().FindElement(locator);
         }
 
 
