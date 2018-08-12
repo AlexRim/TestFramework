@@ -69,6 +69,7 @@
     <Compile Include="DriverCore\Configuration.cs" />
     <Compile Include="DriverExtensions\ClickExtensions.cs" />
     <Compile Include="DriverExtensions\DriverExtension.cs" />
+    <Compile Include="DriverExtensions\ElementExtension.cs" />
     <Compile Include="Enums\Browsers.cs" />
     <Compile Include="Interfaces\IDriverCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
