@@ -24,6 +24,7 @@ namespace AllStarsSolution.WebDriver
         public static IWebDriver GetDriver() => driver;
 
 
+
         private Browser()
         {
             InitParams();
