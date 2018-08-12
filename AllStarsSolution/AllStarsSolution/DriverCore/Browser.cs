@@ -23,6 +23,20 @@ namespace AllStarsSolution.WebDriver
 
         public static IWebDriver GetDriver() => driver;
 
+        private IWebDriver WebDriver => driver;
+
+
+
+        public T InvokeFunc<T>(Func<IWebDriver, T> func)
+        {
+            //this.VerifyIsDisposed();
+            return func != null ? func(this.WebDriver) : default(T);
+        }
+        public void InvokeAction(Action<IWebDriver> action)
+        {
+          //  this.VerifyIsDisposed();
+            action?.Invoke(this.WebDriver);
+        }
 
 
         private Browser()
