@@ -7,11 +7,10 @@ using System;
 
 namespace AllStarsSolution.WebDriver
 {
-    public class Browser
+    public static class Browser
     {
-        private static Browser browser;
 
-        private static IWebDriver driver;
+        private static readonly IWebDriver driver;
 
         private static Browsers currentBrowser;
 
@@ -19,27 +18,25 @@ namespace AllStarsSolution.WebDriver
 
         public static double timeOut;
 
-        public static Browser Driver => browser ?? (browser = new Browser());
+        public static IWebDriver Driver => driver ?? BrowserFactory.GetDriver(currentBrowser);
 
-        public static IWebDriver GetDriver() => driver;
-
-        private IWebDriver WebDriver => driver;
+        private static IWebDriver WebDriver => driver;
 
 
 
-        public T InvokeFunc<T>(Func<IWebDriver, T> func)
+        public static T InvokeFunc<T>(Func<IWebDriver, T> func)
         {
             //this.VerifyIsDisposed();
-            return func != null ? func(this.WebDriver) : default(T);
+            return func != null ? func(driver) : default(T);
         }
-        public void InvokeAction(Action<IWebDriver> action)
+        public static void InvokeAction(Action<IWebDriver> action)
         {
           //  this.VerifyIsDisposed();
-            action?.Invoke(this.WebDriver);
+            action?.Invoke(driver);
         }
 
 
-        private Browser()
+         static Browser()
         {
             InitParams();
             driver = BrowserFactory.GetDriver(currentBrowser);
@@ -56,7 +53,14 @@ namespace AllStarsSolution.WebDriver
 
         }
 
-        public static void Navigate() => GetDriver().Navigate().GoToUrl(Configuration.StartUrl);
-    
+        public static void Navigate() => Driver.Navigate().GoToUrl(Configuration.StartUrl);
+
+        public static void Quit()
+        {
+            driver.Close();
+            driver.Quit();
+        }
+        
+
     }
 }
