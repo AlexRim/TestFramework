@@ -1,4 +1,5 @@
-﻿using AllStarsSolution.WebDriver;
+﻿using AllStarsSolution.DriverCore;
+using AllStarsSolution.WebDriver;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -9,14 +10,33 @@ using System.Threading.Tasks;
 namespace TestProject
 {
     [TestFixture]
-     public  class SmokeTest:Base
+     public  class SmokeTest
     {
         [Test]
         public void Test()
         {
+            Browser.Driver.Navigate().GoToUrl(Configuration.StartUrl);
+            Browser.Quit();
 
-            
+        }
+
+        [Test]
+        public void Test2()
+        {
+
+            Browser.Driver.Navigate().GoToUrl(Configuration.StartUrl);
+            Browser.Quit();
            
+
+        }
+
+        [Test]
+        public void Test3()
+        {
+            Browser.Driver.Navigate().GoToUrl(Configuration.StartUrl);
+            Browser.Quit();
+
+
         }
 
     }

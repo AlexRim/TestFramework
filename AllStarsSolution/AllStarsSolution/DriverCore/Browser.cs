@@ -4,13 +4,14 @@ using AllStarsSolution.Enums;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections.Generic;
 
 namespace AllStarsSolution.WebDriver
 {
-    public static class Browser
+    public class Browser
     {
 
-        private static readonly IWebDriver driver;
+        private static  IWebDriver driver = null;
 
         private static Browsers currentBrowser;
 
@@ -18,14 +19,24 @@ namespace AllStarsSolution.WebDriver
 
         public static double timeOut;
 
-        public static IWebDriver Driver => driver ?? BrowserFactory.GetDriver(currentBrowser);
-
-        private static IWebDriver WebDriver => driver;
-
-
-
-        public static T InvokeFunc<T>(Func<IWebDriver, T> func)
+        public static IWebDriver Driver
         {
+            get
+            {
+                if (driver == null)
+                {
+                    driver = BrowserFactory.GetDriver(currentBrowser);
+                }
+                return driver;
+            }
+        }
+    
+        
+
+
+        public  static  T InvokeFunc<T>(Func<IWebDriver, T> func)
+        {
+           
             //this.VerifyIsDisposed();
             return func != null ? func(driver) : default(T);
         }
@@ -34,12 +45,13 @@ namespace AllStarsSolution.WebDriver
           //  this.VerifyIsDisposed();
             action?.Invoke(driver);
         }
+        private static int count = 0;
+        private static IList<IWebDriver> list = new List<IWebDriver>();
 
 
-         static Browser()
+         public Browser()
         {
             InitParams();
-            driver = BrowserFactory.GetDriver(currentBrowser);
         }
 
 
@@ -53,12 +65,13 @@ namespace AllStarsSolution.WebDriver
 
         }
 
-        public static void Navigate() => Driver.Navigate().GoToUrl(Configuration.StartUrl);
+        public static void Navigate() =>Driver.Navigate().GoToUrl(Configuration.StartUrl);
 
         public static void Quit()
         {
-            driver.Close();
-            driver.Quit();
+            Driver.Close();
+            Driver.Quit();
+            driver=null;
         }
         
 
