@@ -20,11 +20,8 @@ namespace TestProject
         [Test]
         public void Test2()
         {
-
             Browser.Driver.Navigate().GoToUrl(Configuration.StartUrl);
-            Browser.Quit();
-           
-
+            Browser.Quit();         
         }
 
         [Test]
