@@ -10,14 +10,11 @@ using System.Threading.Tasks;
 namespace TestProject
 {
     [TestFixture]
-     public  class SmokeTest
+     public  class SmokeTest: Base
     {
         [Test]
         public void Test()
         {
-            Browser.Driver.Navigate().GoToUrl(Configuration.StartUrl);
-            Browser.Quit();
-
         }
 
         [Test]
@@ -35,8 +32,6 @@ namespace TestProject
         {
             Browser.Driver.Navigate().GoToUrl(Configuration.StartUrl);
             Browser.Quit();
-
-
         }
 
     }

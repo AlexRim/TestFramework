@@ -3,7 +3,7 @@ namespace TestProject
 {
     using AllStarsSolution.WebDriver;
     using NUnit.Framework;
-    using NUnit.Framework;
+
     [TestFixture]
     public class Base
     {
@@ -15,11 +15,8 @@ namespace TestProject
 
         [TearDown]
         public void TearDown()
-        {
-     
+        {   
             Browser.Quit();
         }
-
     }
-
 }

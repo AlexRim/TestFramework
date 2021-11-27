@@ -73,7 +73,6 @@ namespace AllStarsSolution.WebDriver
             Driver.Quit();
             driver=null;
         }
-        
-
+       
     }
 }
