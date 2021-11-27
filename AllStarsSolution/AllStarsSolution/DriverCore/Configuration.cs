@@ -13,7 +13,7 @@ namespace AllStarsSolution.DriverCore
 
         public static string Browser => GetEnvironmentVariables("Browser", "Chrome");
 
-        public static string StartUrl => GetEnvironmentVariables("Url", "https://www.onliner.by");
+        public static string StartUrl => GetEnvironmentVariables("Url", "https://www.av.by");
 
     }
 }

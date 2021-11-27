@@ -12,7 +12,5 @@ namespace AllStarsSolution.DriverExtensions
         public static IWebElement GetElement(IWebDriver driver, By locator) => driver.FindElement(locator);
 
         public static IReadOnlyCollection<IWebElement> GetElements(IWebDriver driver, By locator) => driver.FindElements(locator);
-
-
     }
 }

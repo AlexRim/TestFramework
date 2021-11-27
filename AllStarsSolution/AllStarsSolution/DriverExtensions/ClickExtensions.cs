@@ -6,8 +6,7 @@ namespace AllStarsSolution.DriverExtensions
 {
    public static class ClickExtensions
     {
-       
-
+      
         public static void Click(IWebElement driver, By locator)
         {
             try
@@ -19,6 +18,5 @@ namespace AllStarsSolution.DriverExtensions
                 Console.WriteLine(ex.Message);
             }
         }
-
     }
 }
