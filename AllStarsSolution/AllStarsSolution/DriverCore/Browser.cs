@@ -35,8 +35,7 @@ namespace AllStarsSolution.WebDriver
 
 
         public  static  T InvokeFunc<T>(Func<IWebDriver, T> func)
-        {
-           
+        {         
             //this.VerifyIsDisposed();
             return func != null ? func(driver) : default(T);
         }
@@ -48,7 +47,6 @@ namespace AllStarsSolution.WebDriver
         private static int count = 0;
         private static IList<IWebDriver> list = new List<IWebDriver>();
 
-
          public Browser()
         {
             InitParams();
@@ -58,21 +56,17 @@ namespace AllStarsSolution.WebDriver
         private static void InitParams()
         {
             browserName = Configuration.Browser;
-
-            timeOut = Convert.ToDouble(Configuration.TimeOut);
-            
+            timeOut = Convert.ToDouble(Configuration.TimeOut);           
             Enum.TryParse(browserName, out currentBrowser);
 
         }
 
         public static void Navigate() =>Driver.Navigate().GoToUrl(Configuration.StartUrl);
-
         public static void Quit()
         {
             Driver.Close();
             Driver.Quit();
             driver=null;
-        }
-       
+        }      
     }
 }
