@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiTestProject
+namespace ApiTestProject.Constants
 {
-    public class Class1
+    public static class Endpoints
     {
+        public const string ListUsers = "/api/users?page=2";
     }
 }
