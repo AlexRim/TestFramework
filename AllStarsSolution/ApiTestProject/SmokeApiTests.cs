@@ -17,7 +17,11 @@ namespace ApiTestProject
         public void Test()
         {
             var restClient = new RestClient(Configuration.StartUrl);
-            var request = new RestRequest(Endpoints.ListUsers, Method.Get);
+            var request = new RestRequest(Endpoints.ListUsers, Method.GET);
+            request.AddHeader("Accept", "application/json");
+
+            var response = restClient.Execute(request);
+            var b = response.Content;
         }
 
         [Test]
